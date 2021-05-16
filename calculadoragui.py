@@ -1,4 +1,4 @@
-from tkinter import Tk, Button, Text, PhotoImage, END, re
+from tkinter import Tk, Button, Text, PhotoImage, END
 
 
 #Put it in English
