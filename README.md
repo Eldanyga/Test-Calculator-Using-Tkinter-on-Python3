@@ -5,7 +5,7 @@ A basic Test Calculator GUI using the library Tkinter in Python3, at present in 
 
 
 
-#How to use this Tes Calculator
+How to use this Test Calculator
 
 
 To use this Test Calculator, you just need to enter a valid math expression using your mouse and then press Enter or click on the (=) sign:
