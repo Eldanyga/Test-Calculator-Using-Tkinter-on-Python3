@@ -1,25 +1,27 @@
-from tkinter import Tk, Button, Text, PhotoImage, END
+from tkinter import Tk, Button, Text, PhotoImage, END, Frame
 
 
-#Put it in English
-#Hacer programa para facilitar la creacion de de GUIS
-
+#Aplicacion para detectar las canciones por el ritmo
+#Web para eso
+#App para eso
+#Programa en Python para desarrollar Front-End con html, css, y javascript juntos y sus funcionalidades
+#Web Chat
+#Front-End Developer
 class Interfaz():
-	def __init__(self, ventana):
+	def __init__(self, ventana, frame):
 		self.ventana= ventana
-		self.ventana.title("TEST CALCULATOR BY ELDANYGA GITHUB V1.1 UPDATE")
+		self.frame=frame
+		self.ventana.title("TEST CALCULATOR V-FINAL 1.2")
 		#Test this resolution
 		self.ventana.geometry("413x233")
-		#width and height 0"
 		self.ventana.resizable(False, False)
-
-		self.pantalla=Text(ventana,state="disabled",width=29,height=2,background="orchid",foreground="white",font=("Helvetica",14))
+		#orchid value for background
+		self.pantalla=Text(ventana,state="disabled",width=29,height=2,background="blue",foreground="white",font=("Helvetica",14))
 		self.pantalla.grid(row=0, column=0, columnspan=4, padx=0, pady=10)
 		"Operacion a llevar"
 		self.operacion=""
 		
 		self.cont=1
-
 		return
 
 	def mostraryeliminar(self, valor):
@@ -38,27 +40,18 @@ class Interfaz():
 		try:
 			if not escribir:
 				if valor=="=" and self.operacion!="":
-					#HACIENDO LAS OPEARCIONES
+					#MAKING MATHS OPERATIONS
 					resultado = str(eval(self.operacion))
-					print("RESUTLADO", resultado)
-					print(len(str(resultado)))
-					
-					#self.operacion=""
 					self.limpiarPantalla()
 					self.operacion=str(resultado)
 					self.mostrarEnPantalla(resultado)
 			else:
-				if valor=="()":
-					if self.cont%2==1:
-						valor="("
-					else: valor=")"
-					self.cont+=1
 				self.operacion+=str(valor)
 				self.mostrarEnPantalla(valor)
 
 		except SyntaxError:
 			self.limpiarPantalla()
-			self.mostrarEnPantalla("Está colocando mal un número")
+			self.mostrarEnPantalla("Something is Wrong in your Input !!!")
 
 		return
 
@@ -68,14 +61,15 @@ class Interfaz():
 			return Button(self.ventana, text=str(valor), width=ancho, height=largo, command=self.limpiarPantalla )
 		elif valor=="del":
 			return Button(self.ventana, text=str(valor), width=ancho, height=largo, command=self.borrar)
+		elif valor==")" or valor=="(":
+			return Button(self.frame, text=str(valor), width=4, height=2, command=lambda: self.click(valor, escribir))
 		else:
 			return Button(self.ventana, text=str(valor), background=fondo, width=ancho, height=largo, command=lambda: self.click(valor, escribir))
 
 	def limpiarPantalla(self):
 		self.pantalla.configure(state="normal")
 		self.pantalla.delete("1.0", END)
-		print (END)
-		#self.pantalla.insert(END, 0)
+		#PROBING INSERT 0 WHEN THERE'S NOT ANY OPERATION
 		self.pantalla.configure(state="disabled")
 		self.operacion=""
 		self.cont=1
@@ -88,7 +82,12 @@ class Interfaz():
 		return
 
 root = Tk()
-ventana= Interfaz(root)
+
+#CREATE A NEW FRAME CONTAINER FOR "(" AND ")"
+frame = Frame(root, width=10, height=2)
+frame.grid(column=4, row=3)
+
+ventana= Interfaz(root, frame)
 
 #Creating Buttons
 b1 = ventana.crearBoton(1)
@@ -111,7 +110,9 @@ b18= ventana.crearBoton("%")
 bpun = ventana.crearBoton(".")
 b17 = ventana.crearBoton("del")
 b16 = ventana.crearBoton("/")
-b19 = ventana.crearBoton("()")
+
+b19 = ventana.crearBoton("(")
+b20 = ventana.crearBoton(")")
 
 cont=0
 botones= [b1, b4, b7, b18, b2, b5, b8,b0, b3, b6, b9,bpun, b10, b11,b12, b13, b14, b15]
@@ -124,9 +125,12 @@ b15.grid(column=4, row=0, padx= 10)
 b17.grid(column=4, row=1, padx= 5)
 b14.grid(column=4, row=4)
 b16.grid(column=4, row=2)
-b19.grid(column=4, row=3)
 
-#Icono
+#FRAME BUTTONS "(" AND ")"
+b19.pack(side="left", fill="y", ipadx=1)
+b20.pack(side="right", ipadx=1)
+
+#Icon
 #root.tk.call("wm", "iconphoto", root._w, PhotoImage(file="1916066.png"))
 #root.iconbitmap("/index.ico")
 root.mainloop()
