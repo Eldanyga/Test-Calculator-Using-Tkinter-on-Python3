@@ -9,3 +9,9 @@ How to use this Test Calculator GUI V1.2:
 
 
 To use this Test Calculator, you just need to enter a valid math expression using your mouse and then press Enter or click on the (=) sign:
+
+
+### Pre-requisitos 📋
+
+_None is required_
+
