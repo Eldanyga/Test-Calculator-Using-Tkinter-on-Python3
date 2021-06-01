@@ -15,3 +15,8 @@ To use this Test Calculator, you just need to enter a valid math expression usin
 
 _None is required_
 
+
+### How to run it...
+```
+python test-calculator_gui_V1.2.py
+
