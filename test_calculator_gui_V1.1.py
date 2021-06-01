@@ -1,12 +1,5 @@
 from tkinter import Tk, Button, Text, PhotoImage, END, Frame
 
-
-#Aplicacion para detectar las canciones por el ritmo
-#Web para eso
-#App para eso
-#Programa en Python para desarrollar Front-End con html, css, y javascript juntos y sus funcionalidades
-#Web Chat
-#Front-End Developer
 class Interfaz():
 	def __init__(self, ventana, frame):
 		self.ventana= ventana
