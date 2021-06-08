@@ -4,7 +4,7 @@ class Interfaz():
 	def __init__(self, ventana, frame):
 		self.ventana= ventana
 		self.frame=frame
-		self.ventana.title("TEST CALCULATOR V-FINAL 1.2")
+		self.ventana.title("TEST CALCULATOR V-FINAL 1.1")
 		#Test this resolution
 		self.ventana.geometry("413x233")
 		self.ventana.resizable(False, False)
@@ -48,7 +48,7 @@ class Interfaz():
 
 		return
 
-	def crearBoton(self, valor, escribir=True, ancho=10, largo=2, fondo=None):                     #lambda permite pasarle parametros al metodo click
+	def crearBoton(self, valor, escribir=True, ancho=10, largo=2, fondo=None):                  
 		
 		if valor=="<--":
 			return Button(self.ventana, text=str(valor), width=ancho, height=largo, command=self.limpiarPantalla )
@@ -62,7 +62,6 @@ class Interfaz():
 	def limpiarPantalla(self):
 		self.pantalla.configure(state="normal")
 		self.pantalla.delete("1.0", END)
-		#PROBING INSERT 0 WHEN THERE'S NOT ANY OPERATION
 		self.pantalla.configure(state="disabled")
 		self.operacion=""
 		self.cont=1
